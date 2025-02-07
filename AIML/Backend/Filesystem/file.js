@@ -1,6 +1,9 @@
 const fs = require('fs');
+const path = require('path');
+
 function printFile(fileName){
-    const data = fs.readFileSync(fileName, 'utf-8');
+    const filePath = path.join(__dirname, fileName);
+    const data = fs.readFileSync(filePath, 'utf-8');
     console.log(data.toString());
 }
 
