@@ -1,11 +1,12 @@
 const path = require('path');
-
-const read = (fileName) => {
-    const filePath = path.join(__dirname, fileName);
-    const fs = require('fs');
-    fs.readFile(filePath, 'utf-8', (err, data) => {
-        if(err) console.log(err);
-        console.log(data);
-    });
-}
+const fs = require('fs')
+const read = (filePath) => {
+    try {
+        const data = fs.readFileSync(filePath, 'utf-8'); 
+        return JSON.parse(data); 
+    } catch (err) {
+        console.error("Error reading file:", err);
+        return []; 
+    }
+};
 module.exports = read;
